@@ -1,0 +1,39 @@
+name: test1234
+on:
+  workflow_dispatch:
+    inputs:
+      sourceserverwinstance:
+        description: "sssssssss"
+        required: true
+      postdbchoice:
+        type: choice
+        description: "Is App Post Activity required?"
+        default: "yes"
+        options:
+          - "Yes"
+          - "no"
+        required: true
+env:
+  postDBchoice: "${{ github.event.inputs.postdbchoice }}"
+  description: "${{ github.event.inputs.description }}"
+jobs:
+  Post_APP_Script_out:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Post App Script out
+        if: ${{ env.postDBchoice == 'Yes' && env.description != '123' && env.description != '12345' }}
+        run: |
+          echo "App Script Out1"
+
+  Post_APP_Script_out1:
+    runs-on: ubuntu-latest
+    needs: Post_APP_Script_out
+    steps:
+      - uses: actions/checkout@v3
+      - name: Post App Script out
+        run: |
+          echo "App Script Out"
+
+        
+        
