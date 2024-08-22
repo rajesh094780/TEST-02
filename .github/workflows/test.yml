@@ -10,7 +10,7 @@ on:
         description: "Is App Post Activity required?"
         default: "yes"
         options:
-          - "Yes"
+          - "yes"
           - "no"
         required: true
 env:
